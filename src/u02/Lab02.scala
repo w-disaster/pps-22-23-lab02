@@ -4,8 +4,10 @@ import scala.util.Random
 
 import scala.annotation.tailrec;
 
-object Functions extends App:
+object Lab02 extends App:
   // Tasks
+  // All the tasks were solved alone
+
   // Part 2
   // Part 2.a
   private def posMeth(x: Int): String = x match
@@ -63,16 +65,16 @@ object Functions extends App:
     s"${genCompose(not, not)(true)}, expected: ${true}. Random increase: ${genCompose(randInc, square)(2)}")
 
   // Part 3
-  println(s"${prefix(2)} Part 3:")
+  println(s"${prefix(1)} Part 3:")
 
   @tailrec
   def gcd(a: Int, b: Int): Int = (a, b) match
     case _ if b == 0 => a
     case _ => gcd(b, a % b)
-  println(s"${prefix(3)} GCD as tail recursive function: (${gcd(8, 12)}, ${gcd(14, 7)}), expected: (4, 7)")
+  println(s"${prefix(2)} GCD as tail recursive function: (${gcd(8, 12)}, ${gcd(14, 7)}), expected: (4, 7)")
 
   // Part 4
-  println(s"${prefix(2)} Part 4:")
+  println(s"${prefix(1)} Part 4:")
 
   enum Shape:
     case Rectangle(center: (Double, Double), base: Double, height: Double)
@@ -100,39 +102,39 @@ object Functions extends App:
 
   import Shape.*;
 
-  println(s"${prefix(3)} 'Test' perimeter:")
+  println(s"${prefix(2)} 'Test' perimeter:")
 
   val pRect: (Double, Double, Double) => String = (b, h, p) =>
-    s"${prefix(4)} Rectangle perimeter with base = $b, height = $h: " +
+    s"${prefix(3)} Rectangle perimeter with base = $b, height = $h: " +
     s"computed perimeter = ${perimeter(Rectangle((0, 0), b, h))}, expected = $p"
   println(pRect(4, 3, 14))
 
-  val pSqr: (Double, Double) => String = (s, p) => s"${prefix(4)} Square perimeter with side = $s: " +
+  val pSqr: (Double, Double) => String = (s, p) => s"${prefix(3)} Square perimeter with side = $s: " +
     s"computed perimeter = ${perimeter(Square((0, 0), s))}, expected = $p"
   println(pSqr(3, 12))
 
-  val pCirc: (Double, Double) => String = (r, p) => s"${prefix(4)} Circle perimeter with radius = $r: " +
+  val pCirc: (Double, Double) => String = (r, p) => s"${prefix(3)} Circle perimeter with radius = $r: " +
     s"computed circumference = ${perimeter(Circle((0, 0), r))}, expected = $p"
   println(pCirc(2, 4 * Math.PI))
 
-  println(s"${prefix(3)} 'Test' contains:")
+  println(s"${prefix(2)} 'Test' contains:")
 
   val cRect: (Rectangle, (Double, Double), Boolean) => String =
-    (r, p, b) => s"${prefix(4)} Rectangle with center = ${r.center}, base = ${r.base}, height = ${r.height} contains " +
+    (r, p, b) => s"${prefix(3)} Rectangle with center = ${r.center}, base = ${r.base}, height = ${r.height} contains " +
     s"point $p: computed: ${contains(r, p)}, expected: $b"
 
   println(cRect(Rectangle((0, 0), 4, 3), (1, 0), true))
   println(cRect(Rectangle((0, 0), 4, 3), (4, 0), false))
 
   val cSqr: (Square, (Double, Double), Boolean) => String =
-    (s, p, b) => s"${prefix(4)} Square with center = ${s.center}, side = ${s.side} contains " +
+    (s, p, b) => s"${prefix(3)} Square with center = ${s.center}, side = ${s.side} contains " +
       s"point $p: computed: ${contains(s, p)}, expected: $b"
 
   println(cSqr(Square((0, 0), 3), (1, 0), true))
   println(cSqr(Square((0, 0), 3), (2, 0), false))
 
   val cCirc: (Circle, (Double, Double), Boolean) => String =
-    (c, p, b) => s"${prefix(4)} Circle with center = ${c.center}, radius = ${c.radius} contains " +
+    (c, p, b) => s"${prefix(3)} Circle with center = ${c.center}, radius = ${c.radius} contains " +
       s"point $p: computed: ${contains(c, p)}, expected: $b"
 
   println(cCirc(Circle((0, 0), 3), (1, 1), true))
@@ -175,22 +177,22 @@ object Functions extends App:
 
   import Option.*
 
-  println(s"${prefix(2)} Part 2")
-  println(s"${prefix(3)} Filter:")
+  println(s"${prefix(1)} Part 5:")
+  println(s"${prefix(2)} Filter:")
 
-  println(s"${prefix(4)} (1): ${filter(Some(5))(_ > 2)}, expected: ${Some(5)}")
-  println(s"${prefix(4)} (2): ${filter(Some(5))(_ > 8)}, expected: ${None()}")
-  println(s"${prefix(4)} (3): ${filter(None[Int]())(_ > 2)}, expected: ${None()}")
+  println(s"${prefix(3)} (1): ${filter(Some(5))(_ > 2)}, expected: ${Some(5)}")
+  println(s"${prefix(3)} (2): ${filter(Some(5))(_ > 8)}, expected: ${None()}")
+  println(s"${prefix(3)} (3): ${filter(None[Int]())(_ > 2)}, expected: ${None()}")
 
-  println(s"${prefix(3)} Map:")
+  println(s"${prefix(2)} Map:")
 
-  println(s"${prefix(4)} (1): ${map(Some(5))(_ > 2)}, expected: ${Some(true)}")
-  println(s"${prefix(4)} (2): ${map(Some(5))(_ > 8)}, expected: ${Some(false)}")
-  println(s"${prefix(4)} (3): ${map(None[Int]())(_ > 2)}, expected: ${None()}")
+  println(s"${prefix(3)} (1): ${map(Some(5))(_ > 2)}, expected: ${Some(true)}")
+  println(s"${prefix(3)} (2): ${map(Some(5))(_ > 8)}, expected: ${Some(false)}")
+  println(s"${prefix(3)} (3): ${map(None[Int]())(_ > 2)}, expected: ${None()}")
 
-  println(s"${prefix(3)} 'Fold:")
-  println(s"${prefix(4)} (1): ${fold(Some(5))(1)(_ + 1)}, expected: 6")
-  println(s"${prefix(4)} (2): ${fold(None[Int]())(1)(_ + 1)}, expected: 1")
+  println(s"${prefix(2)} Fold:")
+  println(s"${prefix(3)} (1): ${fold(Some(5))(1)(_ + 1)}, expected: 6")
+  println(s"${prefix(3)} (2): ${fold(None[Int]())(1)(_ + 1)}, expected: 1")
 
 
 
